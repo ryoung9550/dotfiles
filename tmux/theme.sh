@@ -2,6 +2,7 @@
 
 tm_icon="💻 "
 tm_color_active=colour51
+tm_color_background=default
 tm_color_inactive=colour241
 tm_color_feature=colour198
 tm_color_music=colour41
@@ -15,13 +16,13 @@ tm_separator_right_thin="❯"
 
 set -g status-left-length 32
 set -g status-right-length 150
-set -g status-interval 5
+set -g status-interval 2
 
 
 # default statusbar colors
 # set-option -g status-bg colour0
 set-option -g status-fg $tm_color_active
-set-option -g status-bg default
+set-option -g status-bg $tm_color_background
 set-option -g status-attr default
 
 # default window title colors
@@ -58,4 +59,4 @@ tm_host="#[fg=$tm_color_feature,bold]#h"
 tm_session_name="#[fg=$tm_color_feature,bold]$tm_icon #S"
 
 set -g status-left $tm_session_name' '
-set -g status-right $tm_spotify' '$tm_date' '$tm_host
+set -g status-right $tm_spotify' '$tm_date' '$tm_host' '$tm_battery

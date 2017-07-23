@@ -75,10 +75,10 @@ bind -r C-h select-window -t :-
 bind -r C-l select-window -t :+
 
 # Resize pane shortcuts
-bind -r H resize-pane -L 10
-bind -r J resize-pane -D 10
-bind -r K resize-pane -U 10
-bind -r L resize-pane -R 10
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
 
 # maximizing and restoring windows
 unbind Up
@@ -91,8 +91,8 @@ setw -g mode-keys vi
 # more settings to make copy-mode more vim-like
 unbind [
 bind Escape copy-mode
-unbind p
-bind p paste-buffer
+#unbind p
+#bind p paste-buffer
 bind -t vi-copy 'v' begin-selection
 bind -t vi-copy 'y' copy-selection
 
