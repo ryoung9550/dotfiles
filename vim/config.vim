@@ -29,6 +29,7 @@ set shiftwidth=4
 set noexpandtab
 set relativenumber
 syntax on
+colorscheme elflord
 
 "Syntastic Config
 set statusline+=%#warningmsg#
