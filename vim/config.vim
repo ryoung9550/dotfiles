@@ -13,7 +13,6 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
-Plugin 'taglist.vim'
 Plugin 'artur-shaik/vim-javacomplete2'
 
 call vundle#end()            " required
