@@ -30,6 +30,10 @@ set shiftwidth=4
 set noexpandtab
 set relativenumber
 syntax on
+colorscheme elflord
+
+" NASM syntax check
+autocmd BufNewFile,BufRead *.asm set filetype=nasm
 
 "Syntastic Config
 set statusline+=%#warningmsg#
@@ -48,6 +52,7 @@ let g:syntastic_cpp_compiler_options = ' -std=c++1z -stdlib=libc++'
 "YCM Config
 
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+nmap <C-G> :YcmCompleter GoToDefinition<CR>
 
 "javacomplete2 Config
 
