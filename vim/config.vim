@@ -13,13 +13,13 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
-Plugin 'taglist.vim'
 Plugin 'artur-shaik/vim-javacomplete2'
 
 call vundle#end()            " required
 "filetype plugin indent on    " required
 
 set exrc
+set backspace=2
 set secure
 set number
 set autoindent
@@ -71,6 +71,7 @@ imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 map <C-n> :NERDTree<CR>
 
 "Airline Config
+let g:airline_powerline_fonts = 1
 
 set laststatus=2
 "let g:airline_powerline_fonts = 1
