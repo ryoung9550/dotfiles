@@ -14,6 +14,9 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'artur-shaik/vim-javacomplete2'
+Plugin 'Quramy/tsuquyomi'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'grep.vim'
 
 call vundle#end()            " required
 "filetype plugin indent on    " required
@@ -28,6 +31,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set noexpandtab
+set laststatus=2
 set relativenumber
 syntax on
 colorscheme elflord
@@ -71,7 +75,13 @@ imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 map <C-n> :NERDTree<CR>
 
 "Airline Config
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
+let g:airline#extensions#tabline#enabled = 1
 
-set laststatus=2
-"let g:airline_powerline_fonts = 1
+nmap <C-w>n :bn<CR>
+nmap <C-w>p :bp<CR>
+nmap <C-w>1 :bfirst<CR>
+nmap <C-w>2 :bfirst<CR>:bn<CR>
+nmap <C-w>3 :bfirst<CR>:2bn<CR>
+nmap <C-w>4 :bfirst<CR>:3bn<CR>
+nmap <C-w>5 :bfirst<CR>:4bn<CR>
