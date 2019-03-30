@@ -32,6 +32,9 @@ set relativenumber
 syntax on
 colorscheme elflord
 
+let g:NERDTreeDirArrowExpandable = '🠊'
+let g:NERDTreeDirArrowCollapsible = '🠟'
+
 " NASM syntax check
 autocmd BufNewFile,BufRead *.asm set filetype=nasm
 
