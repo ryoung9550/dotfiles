@@ -1,0 +1,39 @@
+---
+- name: Setup ryoung user configuration
+  hosts: all
+  remote_user: ryoung
+
+  tasks:
+  - name: Create git folder
+    file:
+      path: ~/git
+      state: directory
+
+  - name: Clone dotfiles
+    git:
+      clone: yes
+      force: yes
+      dest: ~/git/dotfiles
+      repo: https://github.com/ryoung9550/dotfiles.git
+
+  - name: Install Vundle
+    git:
+      clone: yes
+      force: yes
+      repo: https://github.com/VundleVim/Vundle.vim.git
+      dest: ~/.vim/bundle/Vundle.vim
+
+  - name: Link VIM configuration
+    file:
+      state: link
+      src: ~/git/dotfiles/vim/config.vim
+      dest: ~/.vimrc
+
+  - name: Link tmux configuration
+    file:
+      state: link
+      src: ~/git/dotfiles/tmux/tmux.conf.symlink
+      dest: ~/.tmux.conf
+
+  - name: Install vim plugins
+    command: vim +PluginInstall +q +q
