@@ -1,9 +1,9 @@
 #### COLOUR
 
-tm_icon="💻 "
+tm_icon="💻"
 tm_color_active=colour51
 tm_color_background=default
-tm_color_inactive=colour241
+tm_color_inactive=colour250
 tm_color_feature=colour198
 tm_color_music=colour41
 tm_active_border_color=colour51
@@ -16,12 +16,13 @@ tm_separator_right_thin="❯"
 
 set -g status-left-length 32
 set -g status-right-length 150
-set -g status-interval 2
+set -g status-interval 1
 
 
 # default statusbar colors
 # set-option -g status-bg colour0
 set-option -g status-fg $tm_color_active
+set-option -g status-style fg=$tm_color_active
 set-option -g status-bg $tm_color_background
 set-option -g status-attr default
 
@@ -50,9 +51,9 @@ set-option -g display-panes-colour $tm_color_inactive
 # clock
 set-window-option -g clock-mode-colour $tm_color_active
 
-tm_spotify="#[fg=$tm_color_music]#(osascript ~/Programs/dotfiles/applescripts/spotify.scpt)"
+tm_spotify="#[fg=$tm_color_music]#(osascript ~/git/dotfiles/applescripts/spotify.scpt)"
 tm_tunes="#[fg=$tm_color_music]#(osascript ~/.dotfiles/applescripts/tunes.scpt)"
-tm_battery="#(~/.dotfiles/bin/battery_indicator.sh)"
+tm_battery="#(~/git/dotfiles/bin/battery_indicator.sh)"
 
 tm_date="#[fg=$tm_color_inactive] %R %d %b"
 tm_host="#[fg=$tm_color_feature,bold]#h"
