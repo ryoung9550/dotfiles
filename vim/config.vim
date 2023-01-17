@@ -9,7 +9,7 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-syntastic/syntastic'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
@@ -17,6 +17,10 @@ Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'Quramy/tsuquyomi'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'grep.vim'
+Plugin 'hashivim/vim-terraform'
+Plugin 'junegunn/fzf.vim'
+Plugin 'neoclide/coc.nvim'
+Plugin 'neoclide/coc-python'
 
 call vundle#end()            " required
 "filetype plugin indent on    " required
@@ -35,6 +39,10 @@ set laststatus=2
 set relativenumber
 syntax on
 colorscheme elflord
+
+" on YAML files
+autocmd Filetype yaml set expandtab
+autocmd Filetype yaml set softtabstop=2
 
 let g:NERDTreeDirArrowExpandable = '🠊'
 let g:NERDTreeDirArrowCollapsible = '🠟'
@@ -88,3 +96,11 @@ nmap <C-w>2 :bfirst<CR>:bn<CR>
 nmap <C-w>3 :bfirst<CR>:2bn<CR>
 nmap <C-w>4 :bfirst<CR>:3bn<CR>
 nmap <C-w>5 :bfirst<CR>:4bn<CR>
+
+
+" coc.nvim
+" Use tab for trigger completion with characters ahead and navigate
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config
