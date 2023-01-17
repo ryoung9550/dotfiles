@@ -13,9 +13,16 @@ else
   is_charging=$(echo $battery_info | grep -o '"IsCharging" = [A-Za-z]\+' | awk '{print $3}')
 fi
 
+
+
 charged_slots=$(echo "((($current_charge/$total_charge)*10)/3)+1" | bc -l | cut -d '.' -f 1)
 if [[ $charged_slots -gt 4 ]]; then
   charged_slots=4
+fi
+
+# Exit if total charge is null
+if [[ -z $total_charge ]]; then
+	exit
 fi
 
 if [[ "$is_charging" == "No" ]]; then
