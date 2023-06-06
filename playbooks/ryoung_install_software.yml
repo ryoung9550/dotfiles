@@ -1,0 +1,25 @@
+---
+- name: Install software for ryoung
+  hosts: all
+  remote_user: ryoung
+
+  tasks:
+  #- name: Set package names for system
+
+  - name: Install software
+    become: true
+    apt:
+      name: 
+      - vim
+      - tmux
+      - python3
+      state: present
+      update_cache: yes
+
+  - name: Remove software
+    become: true
+    apt:
+      name:
+      - apache2
+      state: absent
+
