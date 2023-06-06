@@ -104,3 +104,6 @@ nmap <C-w>5 :bfirst<CR>:4bn<CR>
 " no select by `"suggest.noselect": true` in your configuration file
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config
+
+command Snn :set nonumber | :set norelativenumber
+command Sn :set number | :set relativenumber
