@@ -1,0 +1,9 @@
+PATH+=":/opt/homebrew/bin"
+PATH+=":/Users/ryoung/Library/Python/3.9/bin"
+
+which python &> /dev/null
+set PYTHON_NOT_EXISTS=$?
+
+if [ $PYTHON_NOT_EXISTS -gt 0 ] ;then
+	alias python="python3"
+fi

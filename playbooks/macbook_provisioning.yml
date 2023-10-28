@@ -1,0 +1,57 @@
+---
+- name: Install software for ryoung
+  hosts: all
+  remote_user: ryoung
+
+  tasks:
+  #- name: Set package names for system
+
+  - name: Install software
+    become: no
+    homebrew:
+      name: 
+      - vim
+      - tmux
+      - python3
+      - openvpn
+      - nmap
+      state: installed
+      update_homebrew: yes
+
+  - name: Installing docker cask
+    become: no
+    homebrew:
+      name: homebrew/cask/1password
+      state: present
+    ignore_errors: yes
+
+  - name: Installing 1password cask
+    become: no
+    homebrew:
+      name: homebrew/cask/docker
+      state: present
+    ignore_errors: yes
+
+  - name: Installing 1password-cli cask
+    become: no
+    homebrew:
+      name: homebrew/cask/1password-cli
+      state: present
+    ignore_errors: yes
+
+  - name: Remove software
+    become: no
+    homebrew:
+      name:
+      - apache2
+      state: absent
+
+  - name: Install zshrc into home
+    copy:
+      src: mac_zshrc
+      dest: "{{ ansible_env.HOME }}/.zshrc"
+      owner: ryoung
+      group: staff
+      mode: '0644'
+      force: true
+
