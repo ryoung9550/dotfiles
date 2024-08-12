@@ -95,6 +95,7 @@ vim.opt.expandtab = true
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+vim.keymap.set('n', '<leader>pv', vim.cmd.Ex, { desc = 'Open explorer' })
 
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = false
