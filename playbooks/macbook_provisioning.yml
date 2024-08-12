@@ -1,6 +1,7 @@
 ---
 - name: Install software for ryoung
   hosts: all
+  connection: local
   remote_user: ryoung
 
   tasks:
@@ -15,6 +16,7 @@
       - python3
       - openvpn
       - nmap
+      - htop
       state: installed
       update_homebrew: yes
 
