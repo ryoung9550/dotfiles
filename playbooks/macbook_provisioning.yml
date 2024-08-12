@@ -77,6 +77,14 @@
   - name: Create link for neovim config
     file:
       path: "{{ ansible_facts['env']['HOME'] }}/.config/nvim"
+      src: "{{ ansible_facts['env']['HOME'] }}/git/dotfiles/nvim"
+      state: link
+      mode: 0755
+
+  - name: Create link for tmux config
+    file:
+      path: "{{ ansible_facts['env']['HOME'] }}/.tmux.conf"
+      src: "{{ ansible_facts['env']['HOME'] }}/git/dotfiles/tmux/tmux.conf.symlink"
       state: link
       mode: 0755
 
