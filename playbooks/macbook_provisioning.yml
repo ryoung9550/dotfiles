@@ -18,6 +18,7 @@
       - nmap
       - htop
       - ripgrep
+      - wget
       state: installed
       update_homebrew: yes
 
