@@ -11,7 +11,7 @@
     become: no
     homebrew:
       name: 
-      - vim
+      - nvim
       - tmux
       - python3
       - openvpn
@@ -20,26 +20,26 @@
       state: installed
       update_homebrew: yes
 
-  - name: Installing docker cask
-    become: no
-    homebrew:
-      name: homebrew/cask/1password
-      state: present
-    ignore_errors: yes
+    #- name: Installing docker cask
+      #become: no
+      #homebrew:
+        #name: homebrew/cask/1password
+        #state: present
+      #ignore_errors: yes
 
-  - name: Installing 1password cask
-    become: no
-    homebrew:
-      name: homebrew/cask/docker
-      state: present
-    ignore_errors: yes
+    #- name: Installing 1password cask
+      #become: no
+      #homebrew:
+        #name: homebrew/cask/docker
+        #state: present
+      #ignore_errors: yes
 
-  - name: Installing 1password-cli cask
-    become: no
-    homebrew:
-      name: homebrew/cask/1password-cli
-      state: present
-    ignore_errors: yes
+    #- name: Installing 1password-cli cask
+      #become: no
+      #homebrew:
+      #name: homebrew/cask/1password-cli
+      #state: present
+      #ignore_errors: yes
 
   - name: Remove software
     become: no
@@ -56,4 +56,27 @@
       group: staff
       mode: '0644'
       force: true
+
+  - name: Create git folder
+    file:
+      path: "{{ ansible_facts['env']['HOME'] }}/git"
+      state: directory
+      mode: 0755
+
+  - name: Git clone dotfiles
+    git:
+      repo: "https://github.com/ryoung9550/dotfiles.git"
+      dest: "{{ ansible_facts['env']['HOME'] }}/git/dotfiles"
+
+  - name: Create .config folder
+    file:
+      path: "{{ ansible_facts['env']['HOME'] }}/.config"
+      state: directory
+      mode: 0755
+
+  - name: Create link for neovim config
+    file:
+      path: "{{ ansible_facts['env']['HOME'] }}/.config/nvim"
+      state: link
+      mode: 0755
 

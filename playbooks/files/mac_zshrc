@@ -1,5 +1,7 @@
 PATH+=":/opt/homebrew/bin"
-PATH+=":/Users/ryoung/Library/Python/3.9/bin"
+PATH+=":${HOME}/Library/Python/3.9/bin"
+
+alias vim="nvim"
 
 which python &> /dev/null
 set PYTHON_NOT_EXISTS=$?
