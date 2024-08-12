@@ -17,6 +17,7 @@
       - openvpn
       - nmap
       - htop
+      - ripgrep
       state: installed
       update_homebrew: yes
 
