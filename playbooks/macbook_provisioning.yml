@@ -19,6 +19,9 @@
       - htop
       - ripgrep
       - wget
+      - unzip
+      - gopls
+      - pylsp
       state: installed
       update_homebrew: yes
 
