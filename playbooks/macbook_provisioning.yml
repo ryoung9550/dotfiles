@@ -21,9 +21,11 @@
       - wget
       - unzip
       - gopls
-      - pylsp
       state: installed
       update_homebrew: yes
+
+  - name: Install pylsp
+    shell: python3 -m pip install python-lsp-server
 
     #- name: Installing docker cask
       #become: no
@@ -67,11 +69,6 @@
       path: "{{ ansible_facts['env']['HOME'] }}/git"
       state: directory
       mode: 0755
-
-  - name: Git clone dotfiles
-    git:
-      repo: "https://github.com/ryoung9550/dotfiles.git"
-      dest: "{{ ansible_facts['env']['HOME'] }}/git/dotfiles"
 
   - name: Create .config folder
     file:
