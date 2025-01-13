@@ -4,8 +4,8 @@ PATH+=":${HOME}/Library/Python/3.9/bin"
 alias vim="nvim"
 
 which python &> /dev/null
-set PYTHON_NOT_EXISTS=$?
+PYTHON_NOT_EXISTS=$?
 
-if [ $PYTHON_NOT_EXISTS -gt 0 ] ;then
+if [ ! $PYTHON_NOT_EXISTS -eq 0 ]; then
 	alias python="python3"
 fi
