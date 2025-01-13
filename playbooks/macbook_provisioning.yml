@@ -21,11 +21,12 @@
       - wget
       - unzip
       - gopls
+      - pipx
       state: installed
       update_homebrew: yes
 
   - name: Install pylsp
-    shell: python3 -m pip install python-lsp-server
+    shell: pipx install python-lsp-server
 
     #- name: Installing docker cask
       #become: no
