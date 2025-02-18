@@ -1,9 +1,10 @@
-PATH+=":/opt/homebrew/bin"
+PATH="/opt/homebrew/bin:$PATH"
 PATH+=":${HOME}/Library/Python/3.9/bin"
 PATH+=":${HOME}/.local/bin"
 
 alias vim="nvim"
 alias ls="ls --color"
+alias reload="source ~/.zshrc"
 
 which python &> /dev/null
 PYTHON_NOT_EXISTS=$?
