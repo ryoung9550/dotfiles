@@ -22,11 +22,18 @@
       - unzip
       - gopls
       - pipx
+      - ruby@3.3
+      - terraform-ls
       state: installed
       update_homebrew: yes
 
   - name: Install pylsp
     shell: pipx install python-lsp-server
+
+  - name: Install ruby-lsp
+    gem:
+      name: ruby-lsp
+      state: present
 
     #- name: Installing docker cask
       #become: no
