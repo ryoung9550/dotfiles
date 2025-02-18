@@ -5,8 +5,6 @@
   remote_user: ryoung
 
   tasks:
-  #- name: Set package names for system
-
   - name: Install software
     become: no
     homebrew:
