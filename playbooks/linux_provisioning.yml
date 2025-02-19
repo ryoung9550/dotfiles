@@ -1,0 +1,77 @@
+---
+- name: Install software for ryoung
+  hosts: all
+  connection: local
+  remote_user: ryoung
+
+  tasks:
+    - name: Install software
+      become: true
+      apt:
+        state: present
+        update_cache: true
+        name:
+          - neovim
+          - tmux
+          - python3.11
+          - openvpn
+          - nmap
+          - htop
+          - ripgrep
+          - wget
+          - unzip
+          - gopls
+          - pipx
+          - ruby3.0
+          - terraform-ls
+          - zsh
+
+    - name: Set shell to zsh
+      become: true
+      ansible.builtin.user:
+        name: ryoung
+        shell: /use/bin/zsh
+
+    - name: Install pylsp
+      shell: pipx install python-lsp-server
+
+    - name: Install ruby-lsp
+      gem:
+        name: ruby-lsp
+        state: present
+
+    - name: Install zshrc into home
+      copy:
+        src: mac_zshrc
+        dest: "{{ ansible_env.HOME }}/.zshrc"
+        owner: ryoung
+        group: staff
+        mode: '0644'
+        force: true
+
+    - name: Create git folder
+      file:
+        path: "{{ ansible_facts['env']['HOME'] }}/git"
+        state: directory
+        mode: 0755
+
+    - name: Create .config folder
+      file:
+        path: "{{ ansible_facts['env']['HOME'] }}/.config"
+        state: directory
+        mode: 0755
+
+    - name: Create link for neovim config
+      file:
+        path: "{{ ansible_facts['env']['HOME'] }}/.config/nvim"
+        src: "{{ ansible_facts['env']['HOME'] }}/git/dotfiles/nvim"
+        state: link
+        mode: 0755
+
+    - name: Create link for tmux config
+      file:
+        path: "{{ ansible_facts['env']['HOME'] }}/.tmux.conf"
+        src: "{{ ansible_facts['env']['HOME'] }}/git/dotfiles/tmux/tmux.conf.symlink"
+        state: link
+        mode: 0755
+
