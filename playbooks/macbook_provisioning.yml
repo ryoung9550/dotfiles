@@ -4,6 +4,10 @@
   connection: local
   remote_user: ryoung
 
+  vars:
+    homebrew_path: /opt/homebrew
+    ruby_path: "{{ homebrew_path }}/opt/ruby@3.3"
+
   tasks:
   - name: Install software
     become: no
@@ -22,12 +26,99 @@
       - pipx
       - ruby@3.3
       - terraform-ls
-      - ruby-lsp
       state: installed
       update_homebrew: yes
 
   - name: Install pylsp
     shell: pipx install python-lsp-server
+
+  - name: Install ruby-lsp
+    gem:
+      name: ruby-lsp
+      state: present
+
+  - name: Ruby links
+    block:
+      - name: ruby
+        ansible.builtin.file:
+          state: link
+          src: "{{ ruby_path }}/bin/ruby"
+          dest: "{{ homebrew_path }}/bin/ruby"
+          mode: "0775"
+          owner: ryoung
+          group: admin
+
+      - name: rdoc
+        ansible.builtin.file:
+          state: link
+          src: "{{ ruby_path }}/bin/rdoc"
+          dest: "{{ homebrew_path }}/bin/rdoc"
+          mode: "0775"
+          owner: ryoung
+          group: admin
+
+      - name: rake
+        ansible.builtin.file:
+          state: link
+          src: "{{ ruby_path }}/bin/rake"
+          dest: "{{ homebrew_path }}/bin/rake"
+          mode: "0775"
+          owner: ryoung
+          group: admin
+
+      - name: rdbg
+        ansible.builtin.file:
+          state: link
+          src: "{{ ruby_path }}/bin/rdbg"
+          dest: "{{ homebrew_path }}/bin/rdbg"
+          mode: "0775"
+          owner: ryoung
+          group: admin
+
+      - name: gem
+        ansible.builtin.file:
+          state: link
+          src: "{{ ruby_path }}/bin/gem"
+          dest: "{{ homebrew_path }}/bin/gem"
+          mode: "0775"
+          owner: ryoung
+          group: admin
+
+      - name: erb
+        ansible.builtin.file:
+          state: link
+          src: "{{ ruby_path }}/bin/erb"
+          dest: "{{ homebrew_path }}/bin/erb"
+          mode: "0775"
+          owner: ryoung
+          group: admin
+
+      - name: irb
+        ansible.builtin.file:
+          state: link
+          src: "{{ ruby_path }}/bin/irb"
+          dest: "{{ homebrew_path }}/bin/irb"
+          mode: "0775"
+          owner: ryoung
+          group: admin
+
+      - name: ri
+        ansible.builtin.file:
+          state: link
+          src: "{{ ruby_path }}/bin/ri"
+          dest: "{{ homebrew_path }}/bin/ri"
+          mode: "0775"
+          owner: ryoung
+          group: admin
+
+      - name: rbs
+        ansible.builtin.file:
+          state: link
+          src: "{{ ruby_path }}/bin/rbs"
+          dest: "{{ homebrew_path }}/bin/rbs"
+          mode: "0775"
+          owner: ryoung
+          group: admin
 
     #- name: Installing docker cask
       #become: no
