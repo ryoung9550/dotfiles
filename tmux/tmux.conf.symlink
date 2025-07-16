@@ -133,15 +133,10 @@ set-option -g status-bg $tm_color_background
 # set-option -g status-attr default
 
 # default window title colors
-#set-window-option -g window-status-style $tm_color_inactive
-#set-window-option -g window-status-fg $tm_color_inactive
-#set-window-option -g window-status-bg default
 set-option -g window-status-format "#I #W"
+set-option -g window-status-style 'fg=blue,bg=default'
 
 # active window title colors
-#set-window-option -g window-status-current-style $tm_color_active
-#set-window-option -g window-status-current-fg $tm_color_active
-#set-window-option -g window-status-current-bg default
 set-window-option -g  window-status-current-format "#[bold]#I #W"
 
 # pane border
