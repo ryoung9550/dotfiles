@@ -9,6 +9,14 @@
     ruby_path: "{{ homebrew_path }}/opt/ruby@2.7"
 
   tasks:
+  # ruby@2.7 is only available from the puppetlabs tap; run
+  # `brew trust puppetlabs/puppet` once before this playbook
+  - name: Tap puppetlabs/puppet
+    become: no
+    homebrew_tap:
+      name: puppetlabs/puppet
+      state: present
+
   - name: Install software
     become: no
     homebrew:
@@ -24,12 +32,11 @@
       - unzip
       - gopls
       - pipx
-      - ruby@2.7
+      - puppetlabs/puppet/ruby@2.7
       - terraform-ls
       - solargraph
       state: installed
       update_homebrew: yes
-
 
   - name: Install pylsp
     shell: pipx install python-lsp-server
