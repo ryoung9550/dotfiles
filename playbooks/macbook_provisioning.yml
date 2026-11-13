@@ -6,7 +6,7 @@
 
   vars:
     homebrew_path: /opt/homebrew
-    ruby_path: "{{ homebrew_path }}/opt/ruby@3.3"
+    ruby_path: "{{ homebrew_path }}/opt/ruby@2.7"
 
   tasks:
   - name: Install software
@@ -24,10 +24,12 @@
       - unzip
       - gopls
       - pipx
-      - ruby@3.3
+      - ruby@2.7
       - terraform-ls
+      - solargraph
       state: installed
       update_homebrew: yes
+
 
   - name: Install pylsp
     shell: pipx install python-lsp-server
